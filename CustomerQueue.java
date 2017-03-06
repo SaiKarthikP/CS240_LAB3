@@ -1,6 +1,5 @@
-package cs240_lab3;
 
-import cs240_lab3.EmptyQueueException;
+//import EmptyQueueException;
 
 
 public class CustomerQueue implements QueueInterface{

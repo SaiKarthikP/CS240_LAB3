@@ -1,4 +1,3 @@
-package cs240_lab3;
 
 import java.util.Random;
 
@@ -7,11 +6,11 @@ public class Test extends CustomerQueue{
 
 	public static void main(String[] args) {
 		System.out.println("Menu:");
-		System.out.println("(1) Burger – Bun, Patty, Lettuce, Tomato, Onion	");
-		System.out.println("(2) Cheese Burger – Cheese, Bun, Patty, Lettuce, Tomato, Onion");
-		System.out.println("(3) Vegan lettuce wrap Burger – (NO Bun, No Patty),2 order of Lettuce, Tomato, Onion");
+		System.out.println("(1) Burger - Bun, Patty, Lettuce, Tomato, Onion	");
+		System.out.println("(2) Cheese Burger - Cheese, Bun, Patty, Lettuce, Tomato, Onion");
+		System.out.println("(3) Vegan lettuce wrap Burger - (NO Bun, No Patty),2 order of Lettuce, Tomato, Onion");
 		System.out.println("(4) Burger No Onion - (No Onion), Bun, Patty, Lettuce, Tomato, ");
-		System.out.println("(5) Cheese Burger No Onion – (No Onion), Cheese, Bun, Patty, Lettuce, Tomato");
+		System.out.println("(5) Cheese Burger No Onion - (No Onion), Cheese, Bun, Patty, Lettuce, Tomato");
 		System.out.println("(6) Burger No Tomato - (No Tomato), Bun, Patty, Lettuce, Onion");
 		
 		Inventory inv = new Inventory();

@@ -1,4 +1,3 @@
-package cs240_lab3;
 
 import java.util.Random;
 
@@ -11,6 +10,8 @@ public class Inventory extends FoodStack {
 	FoodStack tomatoStack;
 	FoodStack onionStack;
 	FoodStack cheeseStack;
+	
+	int bunCount = 0, pattyCount = 0, lettuceCount = 0, tomatoCount = 0, onionCount = 0, cheeseCount = 0;
 	
 	public Inventory(){
 		bunStack = new FoodStack();
@@ -30,11 +31,18 @@ public class Inventory extends FoodStack {
 		int onionExpiry = 305+date;
 		int cheeseExpiry = 302+date;
 		int stockBun = RandomNumber(700,1000);
+		bunCount += stockBun;
 		int stockPatty = RandomNumber(700,1000);
+		pattyCount += stockPatty;
 		int stockLettuce = RandomNumber(700,1000);
+		lettuceCount += stockLettuce;
 		int stockTomato = RandomNumber(700,1000);
+		tomatoCount += stockTomato;
 		int stockOnion = RandomNumber(700,1000);
+		onionCount += stockOnion;
 		int stockCheese = RandomNumber(700,1000);
+		cheeseCount += stockCheese;
+		
 		for(int i=1; i<=stockBun;i++){
 			bunStack.push(bunExpiry);
 		}
@@ -55,7 +63,12 @@ public class Inventory extends FoodStack {
 		}
 	}
 	public void sortStacks(){
-		
+    SortArray.<Integer>selectionSort(bunStack.expiry, bunCount);
+    SortArray.<Integer>selectionSort(pattyStack.expiry, pattyCount);
+    SortArray.<Integer>selectionSort(lettuceStack.expiry, lettuceCount);
+    SortArray.<Integer>selectionSort(tomatoStack.expiry, tomatoCount);
+    SortArray.<Integer>selectionSort(onionStack.expiry, onionCount);
+    SortArray.<Integer>selectionSort(cheeseStack.expiry, cheeseCount);
 	}
 	
 	public void customerOrder(int menuItem){
@@ -99,29 +112,35 @@ public class Inventory extends FoodStack {
 	public void checkExpiry(int date){
 		int today = 300+date;
 		
-		while (bunStack.peek() <= today && !bunStack.isEmpty()){
+		while (!bunStack.isEmpty() && bunStack.peek() <= today) {
 			bunStack.pop();
 			wasteBun++;
+			bunCount--;
 		}
-		while (pattyStack.peek() <= today && !pattyStack.isEmpty()){
+		while (!pattyStack.isEmpty() && pattyStack.peek() <= today ){
 			pattyStack.pop();
 			wastePatty++;
+			pattyCount--;
 		}
-		while (lettuceStack.peek() <= today && !lettuceStack.isEmpty()){
+		while (!lettuceStack.isEmpty() && lettuceStack.peek() <= today) {
 			lettuceStack.pop();
 			wasteLettuce++;
+			lettuceCount--;
 		}
-		while (tomatoStack.peek() <= today && !tomatoStack.isEmpty()){
+		while (!tomatoStack.isEmpty() && tomatoStack.peek() <= today)  {
 			tomatoStack.pop();
 			wasteTomato++;
+			tomatoCount--;
 		}
-		while (onionStack.peek() <= today && !onionStack.isEmpty()){
+		while (!onionStack.isEmpty() && onionStack.peek() <= today ){
 			onionStack.pop();
 			wasteOnion++;
+			onionCount--;
 		}
-		while (cheeseStack.peek() <= today && !cheeseStack.isEmpty()){
+		while (!cheeseStack.isEmpty() && cheeseStack.peek() <= today ){
 			cheeseStack.pop();
 			wasteCheese++;
+			cheeseCount--;
 		}
 	}
 	
@@ -141,7 +160,7 @@ public class Inventory extends FoodStack {
 				notAvailable = true;
 			
 		}else if  (order == 3){
-			if (lettuceStack.isEmpty() || tomatoStack.isEmpty() || onionStack.isEmpty())
+			if (lettuceCount < 2 || tomatoStack.isEmpty() || onionStack.isEmpty())
 				notAvailable = true; //need to check for 2 lettuce here
 
 		}else if  (order == 4){

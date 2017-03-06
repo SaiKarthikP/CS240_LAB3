@@ -1,4 +1,3 @@
-package cs240_lab3;
 
 public class WaitLine extends CustomerQueue {
 	

@@ -1,13 +1,12 @@
-package cs240_lab3;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
 public class FoodStack implements StackInterface{
-	private Integer[] expiry;    // Array of stack entries
+	public Integer[] expiry;    // Array of stack entries
 	private int topIndex; // Index of top entry
    private boolean initialized = false;
 	private static final int DEFAULT_CAPACITY = 5000;
-	private static final int MAX_CAPACITY = 10000;
+	private static final int MAX_CAPACITY = 15001;
 	
 	public FoodStack()
 	{
@@ -25,6 +24,10 @@ public class FoodStack implements StackInterface{
       initialized = true;
 	} // end constructor
 
+  public int size()
+  {
+    return expiry.length;
+  }
 	public void push(int newEntry)
 	{
 		checkInitialization();
@@ -35,35 +38,24 @@ public class FoodStack implements StackInterface{
 
 	public int peek()
 	{
-		checkInitialization();
-		if (isEmpty())
-			throw new EmptyStackException();
-		else
-         return expiry[topIndex];
+	checkInitialization();
+    return expiry[topIndex];
 	} // end peek
 
 	@SuppressWarnings("null")
-	public int pop()
-	{
-		checkInitialization();
-		if (isEmpty())
-			throw new EmptyStackException();
-		else
-		{
-			int top = expiry[topIndex];
-			expiry[topIndex] = null;
-			topIndex--; 
-         return top;
-		} // end if
+	public int pop(){
+	checkInitialization();
+	int top = expiry[topIndex];
+	expiry[topIndex] = null;
+	topIndex--; 
+    return top;
    } // end pop
 
-   public boolean isEmpty()
-	{
+   public boolean isEmpty(){
 		return topIndex < 0;
 	} // end isEmpty
 	
-	public void clear()
-	{
+	public void clear(){
 		checkInitialization();
       
       // Remove references to the objects in the stack,
